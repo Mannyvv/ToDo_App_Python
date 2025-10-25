@@ -1,27 +1,21 @@
 from nicegui import ui
-from pages.app_page import ToDoApp
+from pages import HomePage, AppPage
 
 
 def root():
+    # Header
     with ui.header().classes("bg-blue-600 text-white"):
         ui.label("HEADER")
+    # Nicegui override
     ui.query(".nicegui-content").classes("p-0 m-0")
-    ui.sub_pages({"/": home, "/app": app}).classes(
+
+    # Body Content
+    ui.sub_pages({"/": HomePage, "/app": AppPage}).classes(
         "flex flex-col items-center justify-center w-full h-screen"
     )
+    # Footer
     with ui.footer().classes("bg-blue-600 text-white"):
         ui.label("FOOTER")
-
-
-def home():
-    with ui.column().classes("items-center justify-center w-full"):
-        ui.label("ToDo List App").classes("text-4xl font-bold mb-4")
-        ui.button("Get Started", on_click=lambda: ui.navigate.to("/app"))
-        ToDoApp()
-
-
-def app():
-    ui.label("This is the app!")
 
 
 ui.run(root)

@@ -25,6 +25,6 @@ class TodoInput:
             ui.notify("Please Enter Text")
 
     def set_inputtext(self):
-        instance_input = ui.input(label="Input Todo Here", placeholder="Start Typing")
+        instance_input = ui.input(label="Type Todo Here", placeholder="Start Typing")
         instance_input.on("keydown.enter", self.send_to_list)
         return instance_input
